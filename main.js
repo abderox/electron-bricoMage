@@ -1,16 +1,18 @@
 // ! npx electronmon . (nodemon likewise)
 
 const { app, BrowserWindow, Menu, ipcMain, shell, Notification } = require('electron')
-const ResizeImg = require('resize-img');
+const resizeImg  = require('resize-img');
 const pngToIco = require('png-to-ico');
-const toastify = require('toastify-js');
+const os = require('os');
+
+
 // require path
 const path = require('path');
 //require fs-extra
 const fs = require('fs-extra');
 //let us build an image resizer
 
-const isDev = process.env.NODE_ENV !== 'development';
+const isDev = process.env.NODE_ENV !== 'production';
 
 var win;
 
@@ -152,7 +154,7 @@ const template = [
 
 ipcMain.on('image:resize', (e, options) => {
     console.log("hello")
-    options.dest = path.join(__dirname, 'imageresizer');
+    options.dest = path.join(os.homedir(), 'imageresizer');
     console.log("🚀 ~ file: main.js:134 ~ ipcMain.on ~ dest", options)
 
     resizeImage(options);
@@ -161,7 +163,7 @@ ipcMain.on('image:resize', (e, options) => {
 
 ipcMain.on('image:convert', (e, options) => {
     console.log("hello")
-    options.dest = path.join(__dirname, 'imageConversion');
+    options.dest = path.join(os.homedir(), 'imageConversion');
     console.log("🚀 ~ file: main.js:134 ~ ipcMain.on ~ dest", options)
 
     imageConverter(options);
@@ -170,7 +172,7 @@ ipcMain.on('image:convert', (e, options) => {
 async function resizeImage({ imgPath, height, width, dest }) {
     try {
         console.log(imgPath, height, width, dest)
-        const resizedImage = await ResizeImg(
+        const resizedImage = await resizeImg (
             fs.readFileSync(imgPath),
             {
                 width: parseInt(width),
@@ -209,7 +211,7 @@ async function resizeImage({ imgPath, height, width, dest }) {
 async function imageConverter({ imgPath, fileName, width, dest }) {
 
     try {
-        const resizedImage = await ResizeImg(
+        const resizedImage = await resizeImg (
             fs.readFileSync(imgPath),
             {
                 width: parseInt(width),

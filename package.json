@@ -1,13 +1,12 @@
 {
-  "name": "image-resieser",
+  "name": "BricoMage",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "productName": "Image resizer",
+  "productName": "BricoMage",
   "scripts": {
     "start": "npx electronmon . ",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico  --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"BricoMage App\""
-
+    "package-win": "electron-packager . bricoMage --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico  --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"BricoMage App v2\""
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +19,11 @@
     "toastify-js": "^1.12.0"
   },
   "dependencies": {
-    "png-to-ico": "^2.1.8"
+    "png-to-ico": "^2.1.8",
+    "resize-img": "^2.0.0",
+    "fs-extra": "^11.1.0",
+    "toastify-js": "^1.12.0",
+    "path": "^0.12.7"
+
   }
 }

@@ -38,11 +38,13 @@ function loadImage(e) {
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
-                background: "tomato"
+            style: {
+                background: "tomato",
+                color: "white",
+                textAlign: "center",
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
-            onClick: function(){
+            onClick: function () {
                 console.log('toast clicked')
             } // Callback after click
         })
@@ -51,7 +53,7 @@ function loadImage(e) {
     const fileSize = file.size / 1024 / 1024;
     if (fileSize > 8) {
 
-     
+
         new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_SIZE_BIG })
         Toastify.toast({
             text: NOTIFICATION_SIZE_BIG,
@@ -59,11 +61,13 @@ function loadImage(e) {
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
-                background: "tomato"
+            style: {
+                background: "tomato",
+                color: "white",
+                textAlign: "center",
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
-            onClick: function(){
+            onClick: function () {
                 console.log('toast clicked')
             } // Callback after click
         })
@@ -83,9 +87,9 @@ function loadImage(e) {
     }
 
     form.style.display = 'block';
-    img_convert.style.display ='none';
+    img_convert.style.display = 'none';
 
-    outputPath.innerHTML = path.join(os.homedir(),'imageresizer');
+    outputPath.innerHTML = path.join(os.homedir(), 'imageresizer');
 
 
 
@@ -105,8 +109,10 @@ function Alert(type, text) {
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
-                background: type ? "#198754" : "tomato"
+            style: {
+                background: type ? "#198754" : "tomato",
+                color: "white",
+                textAlign: "center",
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
         }
@@ -118,7 +124,7 @@ function imageResizer(e) {
     e.preventDefault();
     const file = img.files[0];
 
-    if(!file) {
+    if (!file) {
         Toastify.toast(
             {
                 text: NOTIFICATION_NO_FILE,
@@ -126,8 +132,10 @@ function imageResizer(e) {
                 newWindow: true,
                 gravity: "top", // `top` or `bottom`
                 position: 'center', // `left`, `center` or `right`
-                style : {
-                    background: "tomato"
+                style: {
+                    background: "tomato",
+                    color: "white",
+                    textAlign: "center",
                 },
                 stopOnFocus: true, // Prevents dismissing of toast on hover
             }
@@ -141,24 +149,26 @@ function imageResizer(e) {
         imgPath,
         height,
         width,
-      });
-    
+    });
+
 
 
 
 }
 
-ipcRenderer.on('image:done',()=>{
- 
+ipcRenderer.on('image:done', () => {
+
     Toastify.toast(
         {
-            text:`Image resized to ${heightInput.value} x ${widthInput.value}`,
+            text: `Image resized to ${heightInput.value} x ${widthInput.value}`,
             duration: 6000,
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
-                background: "#198754"
+            style: {
+                background: "#198754",
+                color: "white",
+                textAlign: "center",
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
         }
@@ -168,17 +178,19 @@ ipcRenderer.on('image:done',()=>{
 })
 
 
-ipcRenderer.on('conversion:done',()=>{
- 
+ipcRenderer.on('conversion:done', () => {
+
     Toastify.toast(
         {
-            text:`Image has been converted successfully !`,
+            text: `Image has been converted successfully !`,
             duration: 6000,
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
-                background: "#198754"
+            style: {
+                background: "#198754",
+                color: "white",
+                textAlign: "center",
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
         }
@@ -192,7 +204,7 @@ function imageConvert(e) {
     e.preventDefault();
     const file = img1.files[0];
 
-    if(!file) {
+    if (!file) {
         Toastify.toast(
             {
                 text: NOTIFICATION_NO_FILE,
@@ -200,8 +212,10 @@ function imageConvert(e) {
                 newWindow: true,
                 gravity: "top", // `top` or `bottom`
                 position: 'center', // `left`, `center` or `right`
-                style : {
-                    background: "tomato"
+                style: {
+                    background: "tomato",
+                    color: "white",
+                    textAlign: "center",
                 },
                 stopOnFocus: true, // Prevents dismissing of toast on hover
             }
@@ -209,7 +223,7 @@ function imageConvert(e) {
     }
     const width = widthInput1.value;
     const imgPath = file.path;
-    let fileName = file.name.split('.')[0]+'_'+width+'x'+width;
+    let fileName = file.name.split('.')[0] + '_' + width + 'x' + width;
     console.log(fileName)
     // replace empty spaces
     fileName = fileName.replace(/\s/g, '_');
@@ -218,7 +232,7 @@ function imageConvert(e) {
         imgPath,
         fileName,
         width,
-      });
+    });
 
 }
 
@@ -256,11 +270,11 @@ function loadImageToConvert(e) {
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
+            style: {
                 background: "tomato"
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
-            onClick: function(){
+            onClick: function () {
                 console.log('toast clicked')
             } // Callback after click
         })
@@ -269,7 +283,7 @@ function loadImageToConvert(e) {
     const fileSize = file.size / 1024 / 1024;
     if (fileSize > 8) {
 
-     
+
         new Notification(NOTIFICATION_TITLE, { body: NOTIFICATION_SIZE_BIG })
         Toastify.toast({
             text: NOTIFICATION_SIZE_BIG,
@@ -277,27 +291,27 @@ function loadImageToConvert(e) {
             newWindow: true,
             gravity: "top", // `top` or `bottom`
             position: 'center', // `left`, `center` or `right`
-            style : {
+            style: {
                 background: "tomato"
             },
             stopOnFocus: true, // Prevents dismissing of toast on hover
-            onClick: function(){
+            onClick: function () {
                 console.log('toast clicked')
             } // Callback after click
         })
         return;
     }
 
-   
+
 
     icoform.style.display = 'block';
     imageToResize.style.display = 'none';
     form.style.display = 'block';
-    img_res.style.display ='none';
-   
+    img_res.style.display = 'none';
+
 }
 
 img.addEventListener('change', loadImage);
-form.addEventListener('submit',imageResizer)
+form.addEventListener('submit', imageResizer)
 img1.addEventListener('change', loadImageToConvert);
-btn.addEventListener('click',imageConvert)
+btn.addEventListener('click', imageConvert)
